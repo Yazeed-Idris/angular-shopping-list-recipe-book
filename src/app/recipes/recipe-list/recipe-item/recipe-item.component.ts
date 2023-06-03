@@ -1,6 +1,5 @@
 import {Component, Input} from '@angular/core';
 import {Recipe} from "../../recipe.model";
-import {RecipeService} from "../../../shared/recipe.service";
 
 @Component({
   selector: 'app-recipe-item',
@@ -10,10 +9,7 @@ import {RecipeService} from "../../../shared/recipe.service";
 export class RecipeItemComponent {
   @Input() recipe: Recipe;
 
-  constructor(private recipeService: RecipeService) {
+  constructor() {
   }
 
-  onRecipeClicked() {
-    this.recipeService.recipeSelected.emit(this.recipe)
-  }
 }

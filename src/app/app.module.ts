@@ -11,6 +11,10 @@ import { HeaderComponent } from './header/header.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import {FormsModule} from "@angular/forms";
 import {DropdownDirective} from "./shared/dropdown.directive";
+import {RouterLink, RouterLinkActive} from "@angular/router";
+import {AppRoutingModule} from "./app-routing.module";
+import { EmptyRecipeComponent } from './recipes/empty-recipe/empty-recipe.component';
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +26,16 @@ import {DropdownDirective} from "./shared/dropdown.directive";
     RecipeDetailComponent,
     HeaderComponent,
     RecipesComponent,
-    DropdownDirective
+    DropdownDirective,
+    EmptyRecipeComponent,
+    RecipeEditComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    RouterLink,
+    RouterLinkActive,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

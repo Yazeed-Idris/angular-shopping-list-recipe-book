@@ -9,6 +9,7 @@ import {ShoppingListService} from "./shopping-list.service";
 export class RecipeService {
   private recipes: Recipe[] = [
     new Recipe(
+      0,
       'Tasty Schnitzel',
       'A super-tasty Schnitzel - just awesome!',
       'https://upload.wikimedia.org/wikipedia/commons/7/72/Schnitzel.JPG',
@@ -17,6 +18,7 @@ export class RecipeService {
         new Ingredient('French Fires', 20)
       ]),
     new Recipe(
+      1,
       'Big Fat Burger',
       'What else you need to say?',
       'https://upload.wikimedia.org/wikipedia/commons/b/be/Burger_King_Angus_Bacon_%26_Cheese_Steak_Burger.jpg',
@@ -25,6 +27,7 @@ export class RecipeService {
         new Ingredient('Meat', 1)
       ]),
     new Recipe(
+      2,
       'Recipe 3',
       'This is simply a test',
       'https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_1280.jpg',
@@ -34,6 +37,10 @@ export class RecipeService {
 
   getRecipes() {
     return this.recipes.slice();
+  }
+
+  getRecipe(id: number) {
+    return this.recipes.slice()[id];
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
