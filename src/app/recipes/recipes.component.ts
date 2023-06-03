@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Recipe} from "./recipe.model";
+import {RecipeService} from "../shared/recipe.service";
 
 @Component({
   selector: 'app-recipes',
@@ -8,7 +9,12 @@ import {Recipe} from "./recipe.model";
 })
 export class RecipesComponent {
   selectedRecipe: Recipe;
-  onRecipeSelect(emittedRecipe: Recipe) {
-    this.selectedRecipe = emittedRecipe;
+
+  constructor(private recipeService: RecipeService) {
+    this.recipeService.recipeSelected.subscribe(
+      (recipe: Recipe) => {
+        this.selectedRecipe = recipe;
+      }
+    )
   }
 }
