@@ -10,6 +10,7 @@ export class AuthInterceptorService implements HttpInterceptor{
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    console.log('hello')
     return this.authService.user
       .pipe(
         take(1),

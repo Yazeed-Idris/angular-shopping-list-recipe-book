@@ -20,6 +20,7 @@ export class ShoppingListComponent implements OnDestroy {
     console.log('ingredients:', this.ingredients)
   }
 
+
   ngOnDestroy() {
    this.isChangeSub.unsubscribe();
   }
