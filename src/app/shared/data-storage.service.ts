@@ -10,7 +10,7 @@ import {map, tap} from "rxjs";
 export class DataStorageService {
 
   constructor(private http: HttpClient,
-              private recipeService: RecipeService) {
+              private recipeService: RecipeService,) {
   }
 
   saveRecipes() {
@@ -24,7 +24,9 @@ export class DataStorageService {
   }
 
   fetchData() {
-    return this.http.get<Recipe[]>('https://ng-complete-guide-e8bda-default-rtdb.firebaseio.com/recipes.json')
+
+    return this.http.get<Recipe[]>(
+      'https://ng-complete-guide-e8bda-default-rtdb.firebaseio.com/recipes.json')
       .pipe(
         map((data) => {
           return data.map((el) => {
@@ -35,5 +37,7 @@ export class DataStorageService {
           this.recipeService.setRecipes(data)
         })
       )
+
+
   }
 }
