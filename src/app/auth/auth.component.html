@@ -1,8 +1,9 @@
 <div class="row">
   <div class="col-xs-12 col-md-6 col-md-offset-3">
-    <div class="alert-danger alert" *ngIf="error">
-      <p>{{error}}</p>
-    </div>
+    <!--    <div class="alert-danger alert" *ngIf="error">-->
+    <!--      <p>{{error}}</p>-->
+    <!--    </div>-->
+    <!--    <app-alert [message]="error" *ngIf="error" (close)="onHandleError()"></app-alert>-->
     <div *ngIf="isLoading" style="text-align: center;">
       <app-loading-spinner></app-loading-spinner>
     </div>
@@ -16,8 +17,8 @@
         <input class="form-control" id="password" minlength="6" name="password" ngModel required type="password">
       </div>
       <div>
-        <button class="btn btn-primary" type="submit" [disabled]="authForm.invalid">
-          {{isLoginMode? 'Login' : 'Signup'}}
+        <button [disabled]="authForm.invalid" class="btn btn-primary" type="submit">
+          {{isLoginMode ? 'Login' : 'Signup'}}
         </button>
         |
         <button (click)="onSwitchMode()" class="btn btn-primary"
@@ -26,3 +27,4 @@
     </form>
   </div>
 </div>
+<ng-template appPlaceholder></ng-template>
