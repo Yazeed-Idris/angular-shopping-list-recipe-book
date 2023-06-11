@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse, HttpParams} from "@angular/common/http";
 import {BehaviorSubject, catchError, tap, throwError} from "rxjs";
 import {User} from "./user.model";
 import {Router} from "@angular/router";
+import {environment} from "../../environments/environment";
 
 export interface AuthResponseData {
   idToken: string;
@@ -32,7 +33,7 @@ export class AuthService {
         returnSecureToken: true,
       },
       {
-        params: new HttpParams().set('key', 'AIzaSyCDod8K4KpBMn8-3MUkxYTTRHX96VTSazk')
+        params: new HttpParams().set('key', environment.firebaseAPIKey)
       })
       .pipe(
         catchError(this.handleError),
@@ -49,7 +50,7 @@ export class AuthService {
         returnSecureToken: true,
       },
       {
-        params: new HttpParams().set('key', 'AIzaSyCDod8K4KpBMn8-3MUkxYTTRHX96VTSazk')
+        params: new HttpParams().set('key', environment.firebaseAPIKey)
       })
       .pipe(
         catchError(this.handleError),
