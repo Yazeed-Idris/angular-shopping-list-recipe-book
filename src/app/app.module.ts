@@ -15,6 +15,7 @@ import {RouterLink, RouterLinkActive} from "@angular/router";
 import {AppRoutingModule} from "./app-routing.module";
 import { EmptyRecipeComponent } from './recipes/empty-recipe/empty-recipe.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
         RouterLinkActive,
         AppRoutingModule,
         ReactiveFormsModule,
+      HttpClientModule
     ],
   providers: [],
   bootstrap: [AppComponent]
