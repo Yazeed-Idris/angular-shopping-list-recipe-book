@@ -1,24 +1,17 @@
-import {Injectable} from "@angular/core";
-import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from "@angular/router";
+import {inject} from "@angular/core";
+import {ResolveFn} from "@angular/router";
 import {Recipe} from "./recipe.model";
 import {Observable} from "rxjs";
 import {DataStorageService} from "../shared/data-storage.service";
 import {RecipeService} from "../shared/recipe.service";
-
-@Injectable({
-  providedIn: 'root'
-})
-export class RecipesResolverService implements Resolve<Recipe[]> {
-
-  constructor(private dataStorageService: DataStorageService,
-              private recipesService: RecipeService) {
-  }
-
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Recipe[]> | Promise<Recipe[]> | Recipe[] {
-    const recipes = this.recipesService.getRecipes();
+export const recipeResolver: ResolveFn<Recipe[]> =
+  (): Observable<Recipe[]> | Promise<Recipe[]> | Recipe[] => {
+    const dataStorageService = inject(DataStorageService);
+    const recipesService = inject(RecipeService);
+    const recipes = recipesService.getRecipes();
     if (recipes.length === 0) {
-      return this.dataStorageService.fetchData();
+      return dataStorageService.fetchData();
     }
     return recipes;
   }
-}
+

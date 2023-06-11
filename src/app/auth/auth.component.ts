@@ -40,17 +40,17 @@ export class AuthComponent implements OnDestroy {
       authObs = this.authService.signup(email, password)
     }
 
-    authObs.subscribe(
-      () => {
+    authObs.subscribe({
+      next: () => {
         this.isLoading = false;
         this.router.navigate(['/recipes'])
       },
-      errorMessage => {
+      error: errorMessage => {
         this.error = errorMessage;
         this.isLoading = false;
         this.showErrorAlert(errorMessage)
       }
-    )
+    })
 
 
     authForm.reset()
