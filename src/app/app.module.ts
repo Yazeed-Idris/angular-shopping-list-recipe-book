@@ -8,6 +8,8 @@ import {EmptyRecipeComponent} from './recipes/empty-recipe/empty-recipe.componen
 import {HttpClientModule} from "@angular/common/http";
 import {SharedModule} from "./shared/shared.module";
 import {CoreModule} from "./core/core.module";
+import {StoreModule} from '@ngrx/store';
+import {appReducer} from "./store/app.reducer";
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import {CoreModule} from "./core/core.module";
     HttpClientModule,
     SharedModule,
     CoreModule,
+    StoreModule.forRoot(appReducer, {}),
   ],
   providers: [],
   bootstrap: [AppComponent],
